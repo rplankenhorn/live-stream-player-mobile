@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 
 import Spinner from 'react-native-loading-spinner-overlay';
+import Video from 'react-native-video';
 
 import { getStreams } from '../Api/Api';
 import { Stream } from '../Api/ApiTypes';
@@ -62,10 +63,20 @@ const StreamsComponent = () => {
     )
   }
 
+  const selectedStream = streams?.filter(s => s.title === selected)[0]
+
   return (
     <>
       <View style={styles.streamContainer}>
-
+        {
+          selectedStream &&
+          <Video
+            source={{ uri: selectedStream.url }}
+            style={styles.videoPlayer}
+            controls
+            fullscreenOrientation={"landscape"}
+          />
+        }
       </View>
       <View style={styles.listHeader}>
         <Text>Streams</Text>
@@ -92,7 +103,7 @@ const styles = StyleSheet.create({
     color: '#FFF'
   },
   streamContainer: {
-    backgroundColor: 'blue',
+    backgroundColor: 'black',
     height: '40%'
   },
   listHeader: {
@@ -105,7 +116,14 @@ const styles = StyleSheet.create({
   },
   title: {
 
-  }
+  },
+  videoPlayer: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    bottom: 0,
+    right: 0,
+  },
 });
 
 export default StreamsComponent;
