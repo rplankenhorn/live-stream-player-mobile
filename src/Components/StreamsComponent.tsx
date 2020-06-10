@@ -71,6 +71,7 @@ const StreamsComponent = () => {
         {
           selectedStream &&
           <Video
+            key={selectedStream.title}
             source={{ uri: selectedStream.url }}
             style={styles.videoPlayer}
             controls
