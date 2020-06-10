@@ -45,7 +45,7 @@ const StreamsComponent = () => {
         onPress={() => onSelect(id)}
         style={[
           styles.listItem,
-          { backgroundColor: selected ? '#6e3b6e' : '#f9c2ff' },
+          { backgroundColor: selected ? 'rgb(115,191,85)' : 'white' },
         ]}
       >
         <Text style={styles.title}>{title}</Text>
@@ -79,8 +79,12 @@ const StreamsComponent = () => {
           />
         }
       </View>
-      <View style={styles.listHeader}>
-        <Text>Streams</Text>
+      <View style={styles.listHeaderContainer}>
+        <Text
+          style={styles.listHeader}
+        >
+          Streams
+        </Text>
       </View>
       <FlatList
         data={streams}
@@ -107,16 +111,22 @@ const styles = StyleSheet.create({
     backgroundColor: 'black',
     height: '40%'
   },
-  listHeader: {
+  listHeaderContainer: {
     justifyContent: 'center',
     height: 50,
     marginLeft: 10
   },
+  listHeader: {
+    fontSize: 20,
+    color: 'rgb(84, 129, 210)'
+  },
   listItem: {
-
+    height: 40,
+    flexDirection: 'row',
+    alignItems: 'center'
   },
   title: {
-
+    marginLeft: 10
   },
   videoPlayer: {
     position: 'absolute',
