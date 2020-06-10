@@ -161,7 +161,6 @@
 				43F03947CECE713DBFBE7318 /* Pods-LiveStreamPlayerMobile-tvOSTests.debug.xcconfig */,
 				1C21DE4B326DA2F503356F53 /* Pods-LiveStreamPlayerMobile-tvOSTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
