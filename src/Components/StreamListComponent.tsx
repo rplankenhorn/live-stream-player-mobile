@@ -20,11 +20,11 @@ interface ListItemProps {
   onSelect: Function
 };
 
-const ListItemHeader = () => {
+const Header = () => {
   return (
-    <View style={styles.listHeaderContainer}>
+    <View style={styles.headerContainer}>
       <Text
-        style={styles.listHeader}
+        style={styles.header}
       >
         Streams
         </Text>
@@ -32,10 +32,10 @@ const ListItemHeader = () => {
   );
 };
 
-const ListItemSeparator = () => {
+const Separator = () => {
   return (
     <View
-      style={styles.listItemSeparator}
+      style={styles.separator}
     />
   );
 };
@@ -47,7 +47,7 @@ const ListItem: SFC<ListItemProps> = ({ id, title, selected, onSelect }) => {
     <TouchableOpacity
       onPress={() => onSelect(id)}
       style={[
-        styles.listItem,
+        styles.item,
         { backgroundColor: selected ? 'rgb(115,191,85)' : 'white' },
       ]}
     >
@@ -59,8 +59,8 @@ const ListItem: SFC<ListItemProps> = ({ id, title, selected, onSelect }) => {
 
 const ListEmptyComponent = () => {
   return (
-    <View style={styles.listEmptyContainer}>
-      <Text style={styles.listEmptyText}>No streams available.</Text>
+    <View style={styles.emptyContainer}>
+      <Text style={styles.emptyText}>No streams available.</Text>
     </View>
   );
 }
@@ -94,11 +94,12 @@ const StreamListComponent = (props: StreamListComponentProps) => {
       />
     )
   }
+
   return (
     <FlatList
       data={streams}
-      ListHeaderComponent={ListItemHeader}
-      ItemSeparatorComponent={ListItemSeparator}
+      ListHeaderComponent={Header}
+      ItemSeparatorComponent={Separator}
       renderItem={({ item }) => (
         <ListItem
           id={item.id}
@@ -115,32 +116,35 @@ const StreamListComponent = (props: StreamListComponentProps) => {
 };
 
 const styles = StyleSheet.create({
-  listHeaderContainer: {
+  spinnerTextStyle: {
+    color: '#FFF'
+  },
+  headerContainer: {
     justifyContent: 'center',
     height: 50,
     borderBottomWidth: 1,
     borderBottomColor: 'black'
   },
-  listHeader: {
+  header: {
     marginLeft: 10,
     fontSize: 20,
     color: 'rgb(84, 129, 210)'
   },
-  listEmptyContainer: {
+  emptyContainer: {
     alignItems: 'center',
     justifyContent: 'center',
     height: 50,
   },
-  listEmptyText: {
+  emptyText: {
     fontSize: 15,
     color: 'red',
   },
-  listItem: {
+  item: {
     height: 40,
     flexDirection: 'row',
     alignItems: 'center'
   },
-  listItemSeparator: {
+  separator: {
     height: 1,
     flex: 1,
     marginLeft: 10,

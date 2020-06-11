@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React from 'react';
 import {
   StyleSheet,
   View
@@ -16,7 +16,7 @@ const VideoPlayerComponent = (props: VideoPlayerComponentProps) => {
   const { selectedStream } = props;
 
   return (
-    <View style={styles.streamContainer}>
+    <View style={styles.container}>
       {
         selectedStream &&
         <Video
@@ -33,7 +33,7 @@ const VideoPlayerComponent = (props: VideoPlayerComponentProps) => {
 };
 
 const styles = StyleSheet.create({
-  streamContainer: {
+  container: {
     backgroundColor: 'black',
     height: '40%'
   },
