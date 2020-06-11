@@ -42,6 +42,8 @@ const ListItemSeparator = () => {
 };
 
 const ListItem: React.SFC<ListItemProps> = ({ id, title, selected, onSelect }) => {
+  const imageAsset = selected ? require('../Assets/play_white.png') : require('../Assets/play_green.png');
+
   return (
     <TouchableOpacity
       onPress={() => onSelect(id)}
@@ -50,8 +52,8 @@ const ListItem: React.SFC<ListItemProps> = ({ id, title, selected, onSelect }) =
         { backgroundColor: selected ? 'rgb(115,191,85)' : 'white' },
       ]}
     >
-      <Text style={styles.title}>{title}</Text>
-      <Image style={styles.playButton} source={require('../Assets/play.png')} />
+      <Text style={{ color: selected ? 'white' : 'rgb(79,79,79)', ...styles.title }}>{title}</Text>
+      <Image style={styles.playButton} source={imageAsset} />
     </TouchableOpacity>
   );
 };
