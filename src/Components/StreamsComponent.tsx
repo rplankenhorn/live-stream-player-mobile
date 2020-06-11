@@ -4,7 +4,8 @@ import {
   View,
   Text,
   FlatList,
-  TouchableOpacity
+  TouchableOpacity,
+  Image
 } from 'react-native';
 
 import Spinner from 'react-native-loading-spinner-overlay';
@@ -39,6 +40,26 @@ const StreamsComponent = () => {
     [selected],
   );
 
+  const ListItemHeader = () => {
+    return (
+      <View style={styles.listHeaderContainer}>
+        <Text
+          style={styles.listHeader}
+        >
+          Streams
+        </Text>
+      </View>
+    );
+  };
+
+  const ListItemSeparator = () => {
+    return (
+      <View
+        style={styles.listItemSeparator}
+      />
+    );
+  };
+
   const ListItem: React.SFC<ListItemProps> = ({ id, title, selected, onSelect }) => {
     return (
       <TouchableOpacity
@@ -49,9 +70,10 @@ const StreamsComponent = () => {
         ]}
       >
         <Text style={styles.title}>{title}</Text>
+        <Image style={styles.playButton} source={require('../Assets/play.png')} />
       </TouchableOpacity>
     );
-  }
+  };
 
   if (isLoading) {
     return (
@@ -79,15 +101,10 @@ const StreamsComponent = () => {
           />
         }
       </View>
-      <View style={styles.listHeaderContainer}>
-        <Text
-          style={styles.listHeader}
-        >
-          Streams
-        </Text>
-      </View>
       <FlatList
         data={streams}
+        ListHeaderComponent={ListItemHeader}
+        ItemSeparatorComponent={ListItemSeparator}
         renderItem={({ item }) => (
           <ListItem
             id={item.id}
@@ -125,8 +142,20 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center'
   },
+  listItemSeparator: {
+    height: 1,
+    flex: 1,
+    marginLeft: 10,
+    backgroundColor: "#000",
+  },
   title: {
+    flex: 1,
     marginLeft: 10
+  },
+  playButton: {
+    height: 20,
+    width: 20,
+    marginRight: 20
   },
   videoPlayer: {
     position: 'absolute',
