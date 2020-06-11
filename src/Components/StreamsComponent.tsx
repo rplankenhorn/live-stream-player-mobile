@@ -131,9 +131,11 @@ const styles = StyleSheet.create({
   listHeaderContainer: {
     justifyContent: 'center',
     height: 50,
-    marginLeft: 10
+    borderBottomWidth: 1,
+    borderBottomColor: 'black'
   },
   listHeader: {
+    marginLeft: 10,
     fontSize: 20,
     color: 'rgb(84, 129, 210)'
   },
