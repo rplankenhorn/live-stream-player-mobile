@@ -108,6 +108,7 @@ const StreamsComponent = () => {
             style={styles.videoPlayer}
             controls
             fullscreenOrientation={"landscape"}
+            resizeMode={"contain"}
           />
         }
       </View>
