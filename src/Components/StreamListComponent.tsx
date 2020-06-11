@@ -8,6 +8,8 @@ import {
   Image
 } from 'react-native';
 
+import Spinner from 'react-native-loading-spinner-overlay';
+
 import { fetchStreams } from '../Api/Api';
 import { Stream } from '../Api/ApiTypes';
 
@@ -83,6 +85,15 @@ const StreamListComponent = (props: StreamListComponentProps) => {
     [streams, selected],
   );
 
+  if (loading) {
+    return (
+      <Spinner
+        visible={loading}
+        textContent={'Loading...'}
+        textStyle={styles.spinnerTextStyle}
+      />
+    )
+  }
   return (
     <FlatList
       data={streams}
