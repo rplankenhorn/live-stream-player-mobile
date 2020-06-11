@@ -56,6 +56,14 @@ const ListItem: React.SFC<ListItemProps> = ({ id, title, selected, onSelect }) =
   );
 };
 
+const ListEmptyComponent = () => {
+  return (
+    <View style={styles.listEmptyContainer}>
+      <Text style={styles.listEmptyText}>No streams available.</Text>
+    </View>
+  );
+}
+
 const StreamsComponent = () => {
   const [isLoading, setLoading] = useState(true);
   const [streams, setStreams] = useState<[Stream] | undefined>(undefined);
@@ -115,6 +123,7 @@ const StreamsComponent = () => {
         )}
         keyExtractor={(item, index) => item.id}
         extraData={selected}
+        ListEmptyComponent={ListEmptyComponent}
       />
     </>
   );
@@ -138,6 +147,15 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     fontSize: 20,
     color: 'rgb(84, 129, 210)'
+  },
+  listEmptyContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: 50,
+  },
+  listEmptyText: {
+    fontSize: 15,
+    color: 'red',
   },
   listItem: {
     height: 40,
