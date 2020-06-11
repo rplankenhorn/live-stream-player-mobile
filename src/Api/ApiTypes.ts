@@ -1,6 +1,12 @@
-interface Stream {
+interface StreamResponse {
   url: string,
   title: string,
 }
 
-export type { Stream };
+interface Stream {
+  id: string,
+  url: string,
+  title: string,
+}
+
+export type { Stream, StreamResponse };

@@ -63,7 +63,7 @@ const StreamsComponent = () => {
     )
   }
 
-  const selectedStream = streams?.filter(s => s.title === selected)[0]
+  const selectedStream = streams?.filter(s => s.id === selected)[0]
 
   return (
     <>
@@ -71,7 +71,7 @@ const StreamsComponent = () => {
         {
           selectedStream &&
           <Video
-            key={selectedStream.title}
+            key={selectedStream.id}
             source={{ uri: selectedStream.url }}
             style={styles.videoPlayer}
             controls
@@ -90,13 +90,13 @@ const StreamsComponent = () => {
         data={streams}
         renderItem={({ item }) => (
           <ListItem
-            id={item.title}
+            id={item.id}
             title={item.title}
-            selected={selected === item.title}
+            selected={selected === item.id}
             onSelect={onSelect}
           />
         )}
-        keyExtractor={(item, index) => item.title}
+        keyExtractor={(item, index) => item.id}
         extraData={selected}
       />
     </>
