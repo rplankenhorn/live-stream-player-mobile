@@ -11,7 +11,7 @@ import {
 import Spinner from 'react-native-loading-spinner-overlay';
 import Video from 'react-native-video';
 
-import { getStreams } from '../Api/Api';
+import { Api } from '../Api/Api';
 import { Stream } from '../Api/ApiTypes';
 
 interface ListItemProps {
@@ -72,7 +72,7 @@ const StreamsComponent = () => {
   const [selected, setSelected] = React.useState(undefined);
 
   useEffect(() => {
-    getStreams()
+    Api.getStreams()
       .then((streams) => setStreams(streams))
       .catch((error) => console.error(error))
       .finally(() => setLoading(false));
