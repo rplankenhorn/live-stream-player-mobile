@@ -21,6 +21,41 @@ interface ListItemProps {
   onSelect: Function
 };
 
+const ListItemHeader = () => {
+  return (
+    <View style={styles.listHeaderContainer}>
+      <Text
+        style={styles.listHeader}
+      >
+        Streams
+        </Text>
+    </View>
+  );
+};
+
+const ListItemSeparator = () => {
+  return (
+    <View
+      style={styles.listItemSeparator}
+    />
+  );
+};
+
+const ListItem: React.SFC<ListItemProps> = ({ id, title, selected, onSelect }) => {
+  return (
+    <TouchableOpacity
+      onPress={() => onSelect(id)}
+      style={[
+        styles.listItem,
+        { backgroundColor: selected ? 'rgb(115,191,85)' : 'white' },
+      ]}
+    >
+      <Text style={styles.title}>{title}</Text>
+      <Image style={styles.playButton} source={require('../Assets/play.png')} />
+    </TouchableOpacity>
+  );
+};
+
 const StreamsComponent = () => {
   const [isLoading, setLoading] = useState(true);
   const [streams, setStreams] = useState<[Stream] | undefined>(undefined);
@@ -39,41 +74,6 @@ const StreamsComponent = () => {
     },
     [selected],
   );
-
-  const ListItemHeader = () => {
-    return (
-      <View style={styles.listHeaderContainer}>
-        <Text
-          style={styles.listHeader}
-        >
-          Streams
-        </Text>
-      </View>
-    );
-  };
-
-  const ListItemSeparator = () => {
-    return (
-      <View
-        style={styles.listItemSeparator}
-      />
-    );
-  };
-
-  const ListItem: React.SFC<ListItemProps> = ({ id, title, selected, onSelect }) => {
-    return (
-      <TouchableOpacity
-        onPress={() => onSelect(id)}
-        style={[
-          styles.listItem,
-          { backgroundColor: selected ? 'rgb(115,191,85)' : 'white' },
-        ]}
-      >
-        <Text style={styles.title}>{title}</Text>
-        <Image style={styles.playButton} source={require('../Assets/play.png')} />
-      </TouchableOpacity>
-    );
-  };
 
   if (isLoading) {
     return (
